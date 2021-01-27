@@ -1,28 +1,27 @@
 import java.io.*;
 import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
+import domain.*;
 
-import domain.RouteConverter;
-import domain.Routes;
+import util.CsvToBeans;
 
 public class Main {
-    static ArrayList<Routes> routes = new ArrayList<Routes>();
+    static ArrayList<Route> routes = new ArrayList<Route>();
 
     public static void main(String[] args) throws IOException {
 //        asynchronousRequest();
 
-        String fileName = "cities/lahti/routes.txt";
-        InputStream resource = Main.class.getClassLoader().getResourceAsStream(fileName);
-        if (Objects.isNull(resource)) throw new IllegalStateException("Invalid input!");
-        BufferedReader bReader = new BufferedReader(new InputStreamReader(resource));
+        List<RouteCsvToObject> beans = CsvToBeans.read("cities/lahti/routes.txt", RouteCsvToObject.class);
 
-        try (CSVReader reader = new CSVReader(bReader)) {
-            reader.readAll().forEach(RouteConverter::new);
-        } catch (CsvException e) {
-            throw new IllegalStateException(e);
-        }
+        List<Route> yeet = beans
+            .stream()
+            .map(RouteConverter::convert)
+            .collect(Collectors.toList());
+
+        yeet.forEach(x -> System.out.println(x.getRouteType().getDescription()));
+
     }
 
     private static void asynchronousRequest() throws IOException {

@@ -6,7 +6,7 @@ import java.net.URI;
 
 @Value
 @Builder
-public class Routes {
+public class Route {
     int routeId;
     int agencyId;
     String routeShortName;
@@ -16,5 +16,5 @@ public class Routes {
     URI routeUrl;
     Color routeColor;
     Color routeTextColor;
-    BikeEnum bikesAllowed;
+    BikesAllowed bikesAllowed;
 }

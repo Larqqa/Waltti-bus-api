@@ -1,9 +1,27 @@
 package domain;
 
-import java.util.Arrays;
+import java.awt.*;
+import java.net.URI;
 
-public class RouteConverter {
-    public RouteConverter(String[] route) {
-        System.out.println(Arrays.toString(route));
+import static java.lang.Integer.parseInt;
+
+public final class RouteConverter {
+    public RouteConverter() {}
+    public static Route convert(RouteCsvToObject input) {
+        return Route.builder()
+                .routeId(parseInt(input.getRouteId()))
+                .agencyId(parseInt(input.getAgencyId()))
+                .routeShortName(input.getRouteShortName())
+                .routeLongName(input.getRouteLongName())
+                .routeDesc(input.getRouteDesc())
+                .routeType(RouteType.getEnumById(parseInt(input.getRouteType())))
+                .routeUrl(URI.create(input.getRouteUrl()))
+                .routeColor(Color.getColor("#" + input.getRouteColor()))
+                .routeTextColor(Color.getColor("#" + input.getRouteTextColor()))
+                .bikesAllowed(BikesAllowed
+                        .getEnumById(parseInt(input.getBikesAllowed().isEmpty()
+                            ? "0"
+                            : input.getBikesAllowed())))
+                .build();
     }
 }
