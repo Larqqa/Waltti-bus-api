@@ -1,4 +1,4 @@
-package domain;
+package domain.route;
 
 public enum RouteType {
     TRAM(0, "Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area."),

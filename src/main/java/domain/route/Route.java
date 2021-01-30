@@ -1,4 +1,4 @@
-package domain;
+package domain.route;
 import lombok.Builder;
 import lombok.Value;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package domain;
+package domain.route;
 
 import java.awt.*;
 import java.net.URI;

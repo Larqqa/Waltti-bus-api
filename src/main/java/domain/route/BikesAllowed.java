@@ -1,4 +1,4 @@
-package domain;
+package domain.route;
 
 public enum BikesAllowed {
     UNDEFINED(0, "No bike information for the trip."),
