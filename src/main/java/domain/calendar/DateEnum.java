@@ -1,7 +1,5 @@
 package domain.calendar;
 
-import domain.route.BikesAllowed;
-
 public enum DateEnum {
     NOT_AVAILABLE(0, "Service is not available for Mondays in the date range."),
     AVAILABLE(1,"Service is available for all Mondays in the date range."),

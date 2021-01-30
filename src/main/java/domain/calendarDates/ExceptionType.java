@@ -1,7 +1,5 @@
 package domain.calendarDates;
 
-import domain.route.RouteType;
-
 public enum ExceptionType {
     UNKNOWN(0, "Unknown exception type."),
     ADDED(1,"Service has been added for the specified date."),
